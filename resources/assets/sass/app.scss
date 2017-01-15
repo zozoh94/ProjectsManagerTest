@@ -1,0 +1,36 @@
+
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@import "node_modules/font-awesome/scss/font-awesome";
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+// Datetimepicker
+@import "node_modules/bootstrap-datetime-picker/css/bootstrap-datetimepicker";
+// Select2
+@import "node_modules/select2/dist/css/select2";
+@import "node_modules/select2-bootstrap-theme/dist/select2-bootstrap";
+
+.project {
+    min-height: 200px;
+    padding-top: 10px;
+    &:hover {
+	background-color: #eeeeee;
+    }
+    a {
+	&:hover {
+	    text-decoration: none;
+	}		 
+	color: inherit;
+	.title {
+	    color: #3097D1;
+	}
+    }
+}
+
+.sort-dir {
+    cursor: pointer;
+}
