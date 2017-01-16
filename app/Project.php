@@ -51,18 +51,18 @@ class Project extends Model
             $query->where(function($q) use ($search) {                
                 $keywords = explode(' ', $search['q']);
                 foreach($keywords as $keyword) {
-                    $q->where('name', 'LIKE', $keyword.'%');
-                    $q->orWhere('clientCompanyName', 'LIKE', $keyword.'%');
-                    $q->orWhere('performerCompanyName', 'LIKE', $keyword.'%');
+                    $q->whereRaw('LOWER("name") LIKE ?', array(strtolower($keyword).'%'));
+                    $q->orWhereRaw('LOWER("clientCompanyName") LIKE ?', array(strtolower($keyword).'%'));
+                    $q->orWhereRaw('LOWER("performerCompanyName") LIKE ?', array(strtolower($keyword).'%'));                    
                     $q->orWhereHas('leader', function($q2) use($keyword) {
-                        $q2->where('firstname', 'LIKE', $keyword.'%');
-                        $q2->orWhere('lastname', 'LIKE', $keyword.'%');
-                        $q2->orWhere('email', 'LIKE', $keyword.'%');
+                        $q2->whereRaw('LOWER("firstname") LIKE ?', array(strtolower($keyword).'%'));
+                        $q2->orWhereRaw('LOWER("lastname") LIKE ?', array(strtolower($keyword).'%'));
+                        $q2->orWhereRaw('LOWER("email") LIKE ?', array(strtolower($keyword).'%'));
                     });
                     $q->orWhereHas('performers', function($q2) use($keyword) {
-                        $q2->where('firstname', 'LIKE', $keyword.'%');
-                        $q2->orWhere('lastname', 'LIKE', $keyword.'%');
-                        $q2->orWhere('email', 'LIKE', $keyword.'%');
+                        $q2->whereRaw('LOWER("firstname") LIKE ?', array(strtolower($keyword).'%'));
+                        $q2->orWhereRaw('LOWER("lastname") LIKE ?', array(strtolower($keyword).'%'));
+                        $q2->orWhereRaw('LOWER("email") LIKE ?', array(strtolower($keyword).'%'));
                     });
                 }                
             });

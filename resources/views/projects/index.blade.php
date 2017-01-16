@@ -10,7 +10,7 @@
     </div>
     
     <div class="panel-body">
-      <p>Here you can search for the project you want to see :</p>      
+      <p>Here you can search a Project :</p>      
       <form id="form-search-projects" action="{{ route('projects.index') }}">
 	<input type="text" class="form-control" placeholder="Typing a name, a company name or a leader name or email" v-model="q" @keyup="search()"/>
 	<p></p>
